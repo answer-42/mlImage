@@ -11,6 +11,7 @@ OCAMLPACKS[] =
 		bigarray
 		sdl
 		sdl.sdlimage
+		sdl.sdlgfx
 
 if $(not $(OCAMLFIND_EXISTS))
    eprintln(This project requires ocamlfind, but is was not found.)
