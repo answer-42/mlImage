@@ -1,0 +1,39 @@
+# OMake file for the mlImage viewer written by Sebastian Benque
+# <sebastian.benque@gmail.com>
+# Changelog: * 12/03/2013 - Created 
+
+PROGRAM = mlImage
+FILES[] = 
+	 main
+
+USE_OCAMLFIND = true
+OCAMLPACKS[] =
+		bigarray
+		sdl
+		sdl.sdlimage
+
+if $(not $(OCAMLFIND_EXISTS))
+   eprintln(This project requires ocamlfind, but is was not found.)
+   eprintln(You need to install ocamlfind and run "omake --configure".)
+   exit 1
+
+NATIVE_ENABLED = true
+BYTE_ENABLED   = false
+
+OCAMLFLAGS    +=
+OCAMLCFLAGS   +=
+OCAMLOPTFLAGS +=
+OCAML_LINK_FLAGS +=
+OCAML_BYTE_LINK_FLAGS +=
+OCAML_NATIVE_LINK_FLAGS +=
+
+OCamlProgram($(PROGRAM), $(FILES))
+
+.DEFAULT: $(if $(BYTE_ENABLED), $(PROGRAM).run) \
+          $(if $(NATIVE_ENABLED), $(PROGRAM).opt)
+
+.PHONY: clean
+clean:
+  rm -f \
+     $(filter-proper-targets $(glob $(addsuffix .*, $(FILES)))) \
+     $(PROGRAM).run $(PROGRAM).opt

@@ -1,0 +1,8 @@
+include $(STDLIB)/build/Common
+include $(STDLIB)/build/C
+include $(STDLIB)/build/OCaml
+include $(STDLIB)/build/LaTeX
+
+DefineCommandVars(.)
+
+.SUBDIRS: .
