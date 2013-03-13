@@ -30,8 +30,6 @@ let get_images l =
   let is_image x = List.exists (Filename.check_suffix x)
                       [".jpg"; ".JPG"; ".jpeg"; ".JPEG"] 
   in
-  (* TODO At the moment it only takes pictures. Doesen't decent into the
-   * directories recursively *)
   List.find_all is_image 
     (Array.to_list (Array.concat (List.map (get_files_rec [| |]) l)))
 

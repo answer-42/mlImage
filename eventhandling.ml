@@ -63,10 +63,8 @@ let rec run state changed =
   | KEYDOWN {keysym=KEY_LEFT}   -> run (prev_image state) true
   | KEYDOWN {keysym=KEY_i}      -> run (zoom_in state) true
   | KEYDOWN {keysym=KEY_o}      -> run (zoom_out state) true
-  | KEYDOWN {keysym=KEY_f}      -> state.mode <- Fit;
-                                   run state true
-  | KEYDOWN {keysym=KEY_z}      -> state.mode <- Full;
-                                   run state true 
+  | KEYDOWN {keysym=KEY_f}      -> run {state with mode = Fit} true
+  | KEYDOWN {keysym=KEY_z}      -> run {state with mode = Full} true
   | KEYDOWN {keysym=KEY_s}      -> run (move_down state) true
   | KEYDOWN {keysym=KEY_w}      -> run (move_up state) true
   | KEYDOWN {keysym=KEY_a}      -> run (move_left state) true
