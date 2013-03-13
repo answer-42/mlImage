@@ -5,6 +5,8 @@
 PROGRAM = mlImage
 FILES[] = 
 	 main
+	 imagepaths
+	 eventhandling
 
 USE_OCAMLFIND = true
 OCAMLPACKS[] =
@@ -38,3 +40,4 @@ clean:
   rm -f \
      $(filter-proper-targets $(glob $(addsuffix .*, $(FILES)))) \
      $(PROGRAM).run $(PROGRAM).opt
+
