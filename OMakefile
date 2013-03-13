@@ -1,12 +1,17 @@
 # OMake file for the mlImage viewer written by Sebastian Benque
 # <sebastian.benque@gmail.com>
 # Changelog: * 12/03/2013 - Created 
+# 					 * 13/03/2013 - Added packages, splitted files
 
 PROGRAM = mlImage
 FILES[] = 
 	 main
 	 imagepaths
 	 eventhandling
+	 zoomimage
+	 changeimage
+	 helpers
+	 moveimage
 
 USE_OCAMLFIND = true
 OCAMLPACKS[] =
