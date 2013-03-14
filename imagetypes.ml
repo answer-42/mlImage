@@ -7,9 +7,9 @@
 
 (* Type Declarations 
  ********************)
-type pos       = int * int
+type pos       = int * int;;
 type view_mode = 
-  Fit | Zoom of float| Full
+  Fit | Zoom of float| Full;;
   
 type config_state =
   {
@@ -22,6 +22,6 @@ type config_state =
     mutable fit_ratio        : float;
     mutable mode             : view_mode;
     mutable offset           : pos;
-  }
+  };;
 
 

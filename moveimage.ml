@@ -6,22 +6,24 @@
 *)
 
 open Imagetypes
+(* open Helpers *)
 
-(* TODO make steps depend on image size *)
-let step = 30
+(* TODO: y/x-step should be dependent on imagesize *)
+let xstep state = 10;; 
+let ystep state = 10;;
 
 let move_vert op state =
   let (x,y) = state.offset in
-  {state with offset = (x,op y step)}
+  {state with offset = (x,op y (ystep state))};;
 
 let move_hor op state =
   let (x,y) = state.offset in
-  {state with offset = (op x step,y)}
+  {state with offset = (op x (xstep state),y)};;
 
 
-let move_up   = move_vert (-)
-let move_down = move_vert (+)
+let move_up   = move_vert (-);;
+let move_down = move_vert (+);;
 
-let move_right = move_hor (+)
-let move_left  = move_hor (-)
+let move_right = move_hor (+);;
+let move_left  = move_hor (-);;
 
