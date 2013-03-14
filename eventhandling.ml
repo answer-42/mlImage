@@ -9,29 +9,30 @@ open Sdlevent
 open Sdlkey
 
 open Imagetypes
-open Changeimage
-open Moveimage
-open Zoomimage
 open Helpers
+
+module Change = Changeimage;; 
+module Move   = Moveimage;;
+module Zoom   = Zoomimage;;
 
 let no_images = 1
 let success   = 0
 
-(* Supporting functions 
- ***********************)
+(* Rendering functions 
+ **********************)
 
 let clear state =
-  Sdlvideo.fill_rect state.screen Int32.zero
+  Sdlvideo.fill_rect state.screen Int32.zero;;
 
 let render_fit_image state =
   let cur_im = state.current_image in
   let ratio = state.fit_ratio in
-  Sdlgfx.zoomSurface cur_im ratio ratio false
+  Sdlgfx.zoomSurface cur_im ratio ratio false;;
 
 let render_zoom_image state ratio =
   Sdlgfx.zoomSurface 
     state.current_image
-    ratio ratio false
+    ratio ratio false;;
 
 let render state =
   let img = 
@@ -51,7 +52,7 @@ let render state =
   in
   Sdlvideo.blit_surface ~dst_rect:rect ~src:img ~dst:state.screen ();
 
-  Sdlvideo.flip state.screen
+  Sdlvideo.flip state.screen;;
 
 (* Eventloop 
  ************)
@@ -59,17 +60,17 @@ let rec run state changed =
   if changed then render state;
   match wait_event () with
     KEYDOWN {keysym=KEY_ESCAPE} -> exit success
-  | KEYDOWN {keysym=KEY_RIGHT}  -> run (next_image state) true 
-  | KEYDOWN {keysym=KEY_LEFT}   -> run (prev_image state) true
-  | KEYDOWN {keysym=KEY_i}      -> run (zoom_in state) true
-  | KEYDOWN {keysym=KEY_o}      -> run (zoom_out state) true
+  | KEYDOWN {keysym=KEY_RIGHT}  -> run (Change.next_image state) true 
+  | KEYDOWN {keysym=KEY_LEFT}   -> run (Change.prev_image state) true
+  | KEYDOWN {keysym=KEY_i}      -> run (Zoom.zoom_in state) true
+  | KEYDOWN {keysym=KEY_o}      -> run (Zoom.zoom_out state) true
   | KEYDOWN {keysym=KEY_f}      -> run {state with mode = Fit} true
   | KEYDOWN {keysym=KEY_z}      -> run {state with mode = Full} true
-  | KEYDOWN {keysym=KEY_s}      -> run (move_down state) true
-  | KEYDOWN {keysym=KEY_w}      -> run (move_up state) true
-  | KEYDOWN {keysym=KEY_a}      -> run (move_left state) true
-  | KEYDOWN {keysym=KEY_d}      -> run (move_right state) true
-  | VIDEORESIZE (w,h)           -> run (resize w h state) true
+  | KEYDOWN {keysym=KEY_s}      -> run (Move.move_down state) true
+  | KEYDOWN {keysym=KEY_w}      -> run (Move.move_up state) true
+  | KEYDOWN {keysym=KEY_a}      -> run (Move.move_left state) true
+  | KEYDOWN {keysym=KEY_d}      -> run (Move.move_right state) true
+  | VIDEORESIZE (w,h)           -> run (Zoom.resize w h state) true
   | e -> run state false
-
+  ;;
 

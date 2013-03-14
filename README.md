@@ -6,6 +6,21 @@ BeerWare licence.
 Copyright Sebastian Benque 2013.
 
 ## Usage
+After starting the program, with the path/images as an argument, mlImage will
+recursively look for images in teh given direcetories. And then open them all.
+Then you have the following commands ar your disposal.
+
+    esc       Quit the program
+    right     Next image
+    left      Prev image
+    a         Move image left
+    d         Move image right
+    s         Move image down
+    w         Move image up
+    i         Zoom in
+    o         Zoom out
+    f         Fit image
+    z         Full image
 
 
 ## Install Instructions
@@ -13,17 +28,17 @@ Copyright Sebastian Benque 2013.
 ### Archlinux
 Install ocaml:
 
-     \# pacman -S ocaml
+     # pacman -S ocaml
 
 Install dependencies from AUR:
 
-     \# ocamlsdl
+     # ocamlsdl
     
 Then you can install mlImage.
 
-     \# cd mlImage/
-     \# omake
-     \# cp mlImage.opt <dir of choice>
+     # cd mlImage/
+     # omake
+     # cp mlImage.opt <dir of choice>
 
 ## Licence
 "THE BEER-WARE LICENSE" (Revision 42):
