@@ -9,19 +9,19 @@ let error root e =
   print_endline ("Error: in directory: "^root)
 
 let rec get_files_rec files dir =
-  Array.concat 
-    (Array.to_list 
-      (Array.map
-        (fun fn ->
-          let path = Filename.concat dir fn in
-          let is_dir = try Some (Sys.is_directory path)
-                       with e -> error dir e; None in
-          match is_dir with
-          | Some true  -> 
-              Array.append files (get_files_rec [| |] path)
-          | Some false -> [| path |]
-          | None -> [| |])
-        (try Sys.readdir dir with e -> error dir e; [| |])))
+  Array.fold_right 
+    (fun fn a -> Array.append
+          (let path = Filename.concat dir fn in
+           let is_dir = try Some (Sys.is_directory path)
+                        with e -> error dir e; None in
+           match is_dir with
+           | Some true  -> 
+               Array.append files (get_files_rec [| |] path)
+           | Some false -> [| path |]
+           | None -> [| |])
+          a)
+        (try Sys.readdir dir with e -> error dir e; [| |])
+        [| |]
     
 
 (* Get a list of files/dirs, and returns image files recusively *)
@@ -31,6 +31,7 @@ let get_images l =
                       [".jpg"; ".JPG"; ".jpeg"; ".JPEG"] 
   in
   List.find_all is_image 
-    (Array.to_list (Array.concat (List.map (get_files_rec [| |]) l)))
-
+    (Array.to_list 
+      (Array.fold_right 
+        (fun e a -> Array.append (get_files_rec [||] e) a) l [| |])) 
 

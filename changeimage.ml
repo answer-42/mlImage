@@ -19,8 +19,7 @@ let rot_image_list op state =
   state.current_image_id <- new_id'';
   state.current_image <- Sdlloader.load_image state.image_list.(new_id'');
   state.fit_ratio <- Zoomimage.change_fit_ratio state;
-  state.offset <- (0,0);
-  state
+  {state with fit_ratio = Zoomimage.change_fit_ratio state; offset = (0,0)}
 
 let next_image = rot_image_list (+)
 let prev_image = rot_image_list (-)

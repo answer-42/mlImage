@@ -20,12 +20,9 @@ let change_fit_ratio state =
 (* Zoom current image *)
 let zoom_image op state =
   match state.mode with
-    Zoom x -> state.mode <- Zoom (op x step) ;
-              state
-  | Full   -> state.mode <- Zoom (op 1.0 step);
-              state
-  | _      -> state.mode <- Zoom (op state.fit_ratio step);
-              state
+    Zoom x -> {state with mode = Zoom (op x step)}
+  | Full   -> {state with mode = Zoom (op 1.0 step)}
+  | _      -> {state with mode = Zoom (op state.fit_ratio step)}
 
 let zoom_in  = zoom_image (+.)
 let zoom_out = zoom_image (-.)
@@ -33,7 +30,6 @@ let zoom_out = zoom_image (-.)
 let resize w h state =
   state.window_w <- w;
   state.window_h <- h;
-  state.fit_ratio <- change_fit_ratio state;
-  state
+  {state with fit_ratio = change_fit_ratio state}
 
 

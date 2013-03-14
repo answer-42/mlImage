@@ -41,7 +41,8 @@ let initalize args =
 let main () =
 
   (* Getting commandline arguments *)
-  let args   = Array.to_list Sys.argv in
+  (* TODO takes element 0 (filename also as imagepath *)
+  let args   = Sys.argv in
 
   Sdl.init [`VIDEO];
   at_exit Sdl.quit;

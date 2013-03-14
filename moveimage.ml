@@ -12,13 +12,11 @@ let step = 30
 
 let move_vert op state =
   let (x,y) = state.offset in
-  state.offset <- (x,op y step);
-  state
+  {state with offset = (x,op y step)}
 
 let move_hor op state =
   let (x,y) = state.offset in
-  state.offset <- (op x step,y);
-  state
+  {state with offset = (op x step,y)}
 
 
 let move_up   = move_vert (-)
