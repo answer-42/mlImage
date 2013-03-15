@@ -32,7 +32,7 @@ Install ocaml:
 
 Install dependencies from AUR:
 
-     # ocamlsdl
+     ocamlsdl, ocaml-batteries
     
 Then you can install mlImage.
 

@@ -5,6 +5,7 @@
  * this stuff is worth it, you can buy me a beer in return Sebastian Benque
 *)
 
+open Batteries
 open Imagetypes
 (* open Helpers *)
 

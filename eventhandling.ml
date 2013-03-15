@@ -5,6 +5,8 @@
  * this stuff is worth it, you can buy me a beer in return Sebastian Benque
 *)
 
+open Batteries
+
 open Sdlevent
 open Sdlkey
 
@@ -14,10 +16,6 @@ open Helpers
 module Change = Changeimage;; 
 module Move   = Moveimage;;
 module Zoom   = Zoomimage;;
-
-let no_images = 1
-let success   = 0
-
 (* Rendering functions 
  **********************)
 

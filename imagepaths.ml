@@ -5,6 +5,8 @@
  * this stuff is worth it, you can buy me a beer in return Sebastian Benque
 *)
 
+open Batteries
+
 let error root e =
   print_endline ("Error: in directory: "^root)
 
@@ -30,8 +32,6 @@ let get_images l =
   let is_image x = List.exists (Filename.check_suffix x)
                       [".jpg"; ".JPG"; ".jpeg"; ".JPEG"] 
   in
-  List.find_all is_image 
-    (Array.to_list 
-      (Array.fold_right 
-        (fun e a -> Array.append (get_files_rec [||] e) a) l [| |])) 
-
+  (Array.fold_right 
+        (fun e a -> flip Array.append a @@ get_files_rec [| |] e) l [| |])
+  |> Array.find_all is_image 

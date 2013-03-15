@@ -4,23 +4,23 @@
  * can do whatever you want with this stuff. If we meet some day, and you think
  * this stuff is worth it, you can buy me a beer in return Sebastian Benque
 *)
+open Batteries
 
 open Imagetypes
 open Helpers
 
 (* TODO: Currently it always zooms such that the viewing window is moving too
- * the  upper left corner.  I would like to change it such that it zooms into the
- * middle of the open window. 
+ * the  upper left corner. I think the problem lies in the fact that the offset
+ * is not changing when zooming in/out.
+ *I would like to change it such that it zooms into the  middle of the open window. 
  *)
 
 (* Zoom step *)
 let step = 0.1;;
 
 let change_fit_ratio state =
-  let cur_im       = state.current_image in 
-  let image_width  = width (Sdlvideo.surface_dims cur_im) in
-  let image_height = height (Sdlvideo.surface_dims cur_im) in
-  min (state.window_w//image_width) (state.window_h//image_height);;
+  let (image_w,image_h,_)  = Sdlvideo.surface_dims state.current_image in
+  min (state.window_w//image_w) (state.window_h//image_h);;
 
 (* Zoom current image *)
 let zoom_image op state =
