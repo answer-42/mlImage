@@ -21,5 +21,3 @@ let rot_image_list op state =
 
 let next_image = rot_image_list (+)
 let prev_image = rot_image_list (-)
-
-

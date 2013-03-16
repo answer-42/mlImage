@@ -16,11 +16,11 @@ open Helpers
  *)
 
 (* Zoom step *)
-let step = 0.1;;
+let step = 0.1
 
 let change_fit_ratio state =
   let (image_w,image_h,_)  = Sdlvideo.surface_dims state.current_image in
-  min (state.window_w//image_w) (state.window_h//image_h);;
+  min (state.window_w//image_w) (state.window_h//image_h)
 
 (* Zoom current image *)
 let zoom_image op state =
@@ -28,14 +28,13 @@ let zoom_image op state =
     Zoom x -> {state with mode = Zoom (op x step)}
   | Full   -> {state with mode = Zoom (op 1.0 step)}
   | _      -> {state with mode = Zoom (op state.fit_ratio step)}
-;;
 
-let zoom_in  = zoom_image (+.);;
-let zoom_out = zoom_image (-.);;
+let zoom_in  = zoom_image (+.)
+let zoom_out = zoom_image (-.)
 
 let resize w h state =
   state.window_w <- w;
   state.window_h <- h;
-  {state with fit_ratio = change_fit_ratio state};;
+  {state with fit_ratio = change_fit_ratio state}
 
 

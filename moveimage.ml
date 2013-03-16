@@ -10,21 +10,21 @@ open Imagetypes
 (* open Helpers *)
 
 (* TODO: y/x-step should be dependent on imagesize *)
-let xstep state = 50;; 
-let ystep state = 50;;
+let xstep state = 50
+let ystep state = 50
 
 let move_vert op state =
   let (x,y) = state.offset in
-  {state with offset = (x,op y (ystep state))};;
+  {state with offset = (x,op y (ystep state))}
 
 let move_hor op state =
   let (x,y) = state.offset in
-  {state with offset = (op x (xstep state),y)};;
+  {state with offset = (op x (xstep state),y)}
 
 
-let move_up   = move_vert (-);;
-let move_down = move_vert (+);;
+let move_up   = move_vert (-)
+let move_down = move_vert (+)
 
-let move_right = move_hor (+);;
-let move_left  = move_hor (-);;
+let move_right = move_hor (+)
+let move_left  = move_hor (-)
 

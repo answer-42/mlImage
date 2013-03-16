@@ -47,6 +47,6 @@ let main () =
   at_exit Sdl.quit;
  
   Eventhandling.run (initalize args) true
-    
+
 let () = main ()
 

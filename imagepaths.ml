@@ -24,14 +24,15 @@ let rec get_files_rec files dir =
           a)
         (try Sys.readdir dir with e -> error dir e; [| |])
         [| |]
-    
 
+(* Here we can add more accepted picture types 
+ * TODO: Use magic library *)
+let is_image x = List.exists (Filename.check_suffix x)
+                   [".jpg"; ".JPG"; ".jpeg"; ".JPEG"] 
+ 
 (* Get a list of files/dirs, and returns image files recusively *)
 let get_images l =
-  (* Here we can add more accepted picture types *)
-  let is_image x = List.exists (Filename.check_suffix x)
-                      [".jpg"; ".JPG"; ".jpeg"; ".JPEG"] 
-  in
   (Array.fold_right 
         (fun e a -> flip Array.append a @@ get_files_rec [| |] e) l [| |])
   |> Array.find_all is_image 
+
