@@ -11,7 +11,7 @@ open Imagetypes
 open Helpers
 
 let initalize args =
-  let images = Imagepaths.get_images args in
+  let images = Imagepaths.get_images @@ Array.tail args 1 in
   let cur_img_id = 0 in
   (* At least one image is needed to continue *)
   if Array.length images < 1 then exit Helpers.no_images;
