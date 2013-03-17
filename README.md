@@ -43,6 +43,7 @@ Then you can install mlImage.
 
 ### Linux in General
 Use opam to install batteries and sdl.
+
      # opam update
      # opam install ocamlsdl
      # opan install batteries
