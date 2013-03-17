@@ -10,17 +10,21 @@
 type pos       = int * int
 type view_mode = 
   Fit | Zoom of float| Full
-  
+type text_type =
+  Help | Info | None
+
 type config_state =
   {
     mutable screen           : Sdlvideo.surface;
     mutable current_image    : Sdlvideo.surface;
     mutable current_image_id : int;
             image_list       : string array;
+            font             : Sdlttf.font;
     mutable window_w         : int;
     mutable window_h         : int;
     mutable fit_ratio        : float;
     mutable mode             : view_mode;
+    mutable text             : text_type;
     mutable offset           : pos;
   }
 

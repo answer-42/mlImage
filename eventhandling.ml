@@ -16,6 +16,7 @@ open Helpers
 module Change = Changeimage;; 
 module Move   = Moveimage;;
 module Zoom   = Zoomimage;;
+module Text   = Showtext
 (* Rendering functions 
  **********************)
 
@@ -50,6 +51,10 @@ let render state =
   in
   Sdlvideo.blit_surface ~dst_rect:rect ~src:img ~dst:state.screen ();
 
+  (* Blip text on image *)
+  if state.text = Info then 
+    Sdlvideo.blit_surface (Text.render_info state) state.screen ();
+  
   Sdlvideo.flip state.screen;;
 
 (* Eventloop 
@@ -68,6 +73,8 @@ let rec run state changed =
   | KEYDOWN {keysym=KEY_w}      -> run (Move.move_up state) true
   | KEYDOWN {keysym=KEY_a}      -> run (Move.move_left state) true
   | KEYDOWN {keysym=KEY_d}      -> run (Move.move_right state) true
+  | KEYDOWN {keysym=KEY_t}      -> run {state with text = Info} true
+  | KEYDOWN {keysym=KEY_n}      -> run {state with text = None} true
   | VIDEORESIZE (w,h)           -> run (Zoom.resize w h state) true
   | e -> run state false
   ;;

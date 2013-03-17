@@ -21,7 +21,9 @@ let initalize args =
   let (s_width, s_height, _) =  Sdlvideo.surface_dims screen in
   let (image_width, image_height, _)  = Sdlvideo.surface_dims img in
   let ratio =  min (s_width//image_width) (s_height//image_height) in
-
+  
+  (* Initalize font system *)
+  let f = Showtext.init_fonts in
   (* Constructing inital state *)
   {
     screen = screen;
@@ -31,8 +33,10 @@ let initalize args =
     window_w         = s_width;
     window_h         = s_height;
     mode             = Fit;
+    text             = None;
     fit_ratio        = ratio;
     offset           = (0,0);
+    font             = f;
   }
 
 (* Main 
