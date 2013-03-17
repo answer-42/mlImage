@@ -10,6 +10,7 @@ open Batteries
 let error root e =
   print_endline ("Error: in directory: "^root)
 
+(** Get files from inside a given directory recursively. *)
 let rec get_files_rec files dir =
   Array.fold_right 
     (fun fn a -> Array.append
@@ -25,13 +26,26 @@ let rec get_files_rec files dir =
         (try Sys.readdir dir with e -> error dir e; [| |])
         [| |]
 
-(* Here we can add more accepted picture types 
- * TODO: Use magic library *)
-let is_image x = List.exists (Filename.check_suffix x)
+(* TOO slow
+let is_image x = 
+  let c = Magic.create [] in
+  let m = Magic.file c x in
+  String.exists m  "image data"
+*)
+
+(* Here we can add more accepted picture types *)
+(*let is_image x = List.exists (Filename.check_suffix x)
                    [".jpg"; ".JPG"; ".jpeg"; ".JPEG"] 
- 
-(* Get a list of files/dirs, and returns image files recusively *)
+ *)
+
+(** Get a list of files/dirs, and returns image files recusively *)
 let get_images l =
+  let c = Magic.create [] in
+  let is_image x =  
+    let m = Magic.file c x in
+    String.exists m  "image data"
+  in
+
   (Array.fold_right 
         (fun e a -> flip Array.append a @@ get_files_rec [| |] e) l [| |])
   |> Array.find_all is_image 

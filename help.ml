@@ -8,3 +8,17 @@ open Batteries
 
 open Imagetypes
 
+let usage =
+    "mlImage <image/dir list>\n\n"^
+    "esc       Quit the program\n"^
+    "right     Next image\n"^
+    "left      Prev image\n"^
+    "a         Move image left\n"^
+    "d         Move image right\n"^
+    "s         Move image down\n"^
+    "w         Move image up\n"^
+    "i         Zoom in\n"^
+    "o         Zoom out\n"^
+    "f         Fit image\n"^
+    "z         Full image\n"
+

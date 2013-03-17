@@ -12,6 +12,7 @@ FILES[] =
 	 zoomimage
 	 changeimage
 	 helpers
+	 help
 	 moveimage
 
 USE_OCAMLFIND = true
@@ -21,6 +22,7 @@ OCAMLPACKS[] =
 		sdl.sdlimage
 		sdl.sdlgfx
 		batteries
+		magic
 
 if $(not $(OCAMLFIND_EXISTS))
    eprintln(This project requires ocamlfind, but is was not found.)
