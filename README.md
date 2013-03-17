@@ -21,7 +21,8 @@ Then you have the following commands ar your disposal.
     o         Zoom out
     f         Fit image
     z         Full image
-
+    t         Show file name
+    n         Don't show any text (right now opposite of 't')
 
 ## Install Instructions
 
@@ -32,8 +33,21 @@ Install ocaml:
 
 Install dependencies from AUR:
 
-     ocamlsdl, ocaml-batteries
+     ocamlsdl, ocaml-batteries, ocaml-magic
     
+Then you can install mlImage.
+
+     # cd mlImage/
+     # omake
+     # cp mlImage.opt <dir of choice>
+
+### Linux in General
+Use opam to install batteries and sdl.
+     # opam update
+     # opam install ocamlsdl
+     # opan install batteries
+     # opam install magic
+
 Then you can install mlImage.
 
      # cd mlImage/
