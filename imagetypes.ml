@@ -9,7 +9,7 @@
  ********************)
 type pos       = int * int
 type view_mode = 
-  Fit | Zoom of float| Full
+  Fit | Zoom of float | Full
 type text_type =
   Help | Info | None
 

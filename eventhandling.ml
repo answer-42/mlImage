@@ -51,10 +51,8 @@ let render state =
   in
   Sdlvideo.blit_surface ~dst_rect:rect ~src:img ~dst:state.screen ();
 
-  (* Blip text on image *)
-  if state.text = Info then 
-    Sdlvideo.blit_surface (Text.render_info state) state.screen ();
-  
+  Text.render_info state;
+ 
   Sdlvideo.flip state.screen;;
 
 (* Eventloop 
