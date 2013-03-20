@@ -24,7 +24,7 @@ OCAMLPACKS[] =
 		sdl.sdlgfx
 		sdl.sdlttf
 		batteries
-		magic
+#		magic
 
 if $(not $(OCAMLFIND_EXISTS))
    eprintln(This project requires ocamlfind, but is was not found.)
