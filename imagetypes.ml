@@ -15,7 +15,7 @@ type text_type =
 
 type config_state =
   {
-    mutable screen           : Sdlvideo.surface;
+            screen           : Sdlvideo.surface;
     mutable current_image    : Sdlvideo.surface;
     mutable current_image_id : int;
             image_list       : string array;

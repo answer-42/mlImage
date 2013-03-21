@@ -22,7 +22,8 @@ Then you have the following commands ar your disposal.
     f         Fit image
     z         Full image
     t         Show file name
-    n         Don't show any text (right now opposite of 't')
+    h         Show help text
+    n         Don't show any text
 
 ## Install Instructions
 

@@ -51,8 +51,11 @@ let render state =
   in
   Sdlvideo.blit_surface ~dst_rect:rect ~src:img ~dst:state.screen ();
 
-  Text.render_info state;
- 
+  if state.text == Info then
+    Text.render_info state
+  else if (state.text == Info) then
+    Text.render_help state;
+
   Sdlvideo.flip state.screen;;
 
 (* Eventloop 
@@ -72,6 +75,7 @@ let rec run state changed =
   | KEYDOWN {keysym=KEY_a}      -> run (Move.move_left state) true
   | KEYDOWN {keysym=KEY_d}      -> run (Move.move_right state) true
   | KEYDOWN {keysym=KEY_t}      -> run {state with text = Info} true
+  | KEYDOWN {keysym=KEY_h}      -> run {state with text = Help} true
   | KEYDOWN {keysym=KEY_n}      -> run {state with text = None} true
   | VIDEORESIZE (w,h)           -> run (Zoom.resize w h state) true
   | e -> run state false

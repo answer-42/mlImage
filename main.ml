@@ -11,7 +11,7 @@ open Imagetypes
 open Helpers
 
 let initalize args =
-  let images = Imagepaths.get_images @@ Array.tail args 1 in
+  let images = Imagepaths.get_images args in
   let cur_img_id = 0 in
   (* At least one image is needed to continue *)
   if Array.length images < 1 then exit Helpers.no_images;
@@ -44,8 +44,7 @@ let initalize args =
 let main () =
 
   (* Getting commandline arguments *)
-  (* TODO takes element 0 (filename also as imagepath *)
-  let args   = Sys.argv in
+  let args   = Array.tail Sys.argv 1 in
 
   Sdl.init [`VIDEO];
   at_exit Sdl.quit;
