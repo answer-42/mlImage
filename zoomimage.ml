@@ -25,7 +25,7 @@ let change_fit_ratio state =
 (* Zoom current image *)
 let zoom_image op state =
   match state.mode with
-    Zoom x -> {state with mode = Zoom (op x step)}
+  | Zoom x -> {state with mode = Zoom (op x step)}
   | Full   -> {state with mode = Zoom (op 1.0 step)}
   | _      -> {state with mode = Zoom (op state.fit_ratio step)}
 

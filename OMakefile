@@ -15,6 +15,7 @@ FILES[] =
 	 help
 	 moveimage
 	 showtext
+	 parseconfig
 
 USE_OCAMLFIND = true
 OCAMLPACKS[] =

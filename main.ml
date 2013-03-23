@@ -10,6 +10,8 @@ open Batteries
 open Imagetypes
 open Helpers
 
+module Config = Parseconfig
+
 let initalize args =
   let images = Imagepaths.get_images args in
   let cur_img_id = 0 in
