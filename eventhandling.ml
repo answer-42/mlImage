@@ -36,7 +36,7 @@ let render_zoom_image state ratio =
 let render state =
   let img = 
     match state.mode with
-      Fit       -> render_fit_image state
+    | Fit       -> render_fit_image state
     | Zoom ratio -> render_zoom_image state ratio
     | Full       -> Sdlloader.load_image state.image_list.(state.current_image_id);
   in
@@ -53,7 +53,7 @@ let render state =
 
   if state.text == Info then
     Text.render_info state
-  else if (state.text == Info) then
+  else if (state.text == Help) then
     Text.render_help state;
 
   Sdlvideo.flip state.screen;;
@@ -63,7 +63,7 @@ let render state =
 let rec run state changed =
   if changed then render state;
   match wait_event () with
-    KEYDOWN {keysym=KEY_ESCAPE} -> exit success
+  | KEYDOWN {keysym=KEY_ESCAPE} -> exit success
   | KEYDOWN {keysym=KEY_RIGHT}  -> run (Change.next_image state) true 
   | KEYDOWN {keysym=KEY_LEFT}   -> run (Change.prev_image state) true
   | KEYDOWN {keysym=KEY_i}      -> run (Zoom.zoom_in state) true
