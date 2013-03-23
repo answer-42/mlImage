@@ -10,4 +10,3 @@ open Batteries
 open Imagetypes
 
 (* TODO write config parser *)
-
