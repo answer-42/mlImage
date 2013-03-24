@@ -40,7 +40,11 @@ let get_images l =
 
   (* Here we can add more accepted picture types *)
   let is_image x = List.exists (Filename.check_suffix x) 
-                      [".jpg"; ".JPG"; ".jpeg"; ".JPEG"] 
+                               [".jpg"; ".JPG"; ".jpeg"; ".JPEG";
+                                ".tga"; ".bmp"; ".pnm"; ".pbm";
+                                ".pgm"; ".ppm"; ".xpm"; ".xcf";
+                                ".pcx"; ".gif"; ".tif"; ".tiff";
+                                ".lbm"; ".iff"; ".png"] 
   in  
   (Array.fold_right 
         (fun e a -> flip Array.append a @@ get_files_rec [| |] e) l [| |])
