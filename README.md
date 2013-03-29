@@ -34,7 +34,7 @@ Install ocaml:
 
 Install dependencies from AUR:
 
-     ocamlsdl, ocaml-batteries, ocaml-magic
+     ocamlsdl, ocaml-batteries, ocaml-magic, ttf-dejavu
     
 Then you can install mlImage.
 
@@ -50,7 +50,7 @@ Use opam to install batteries and sdl.
      # opan install batteries
      # opam install magic
 
-Then you can install mlImage.
+You will need to install DejaVu TTF fonts to. Then you can install mlImage.
 
      # cd mlImage/
      # omake
