@@ -37,4 +37,3 @@ let resize w h state =
   state.window_h <- h;
   {state with fit_ratio = change_fit_ratio state}
 
-

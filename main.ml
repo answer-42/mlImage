@@ -45,6 +45,8 @@ let main () =
 
   (* Getting commandline arguments *)
   let args   = Array.tail Sys.argv 1 in
+  
+  if Array.length args == 1 then Help.exit_usage;
 
   Sdl.init [`VIDEO];
   at_exit Sdl.quit;

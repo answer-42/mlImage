@@ -14,7 +14,13 @@ let width (w,h,p)  = w
 let height (w,h,p) = h
 
 
-let no_images = 1
-let success   = 0
+(** Not enough command line arguments were given. *)
+let not_enough_args = 2
+
+(** No images were in the arg list *)
+let no_images       = 1
+
+(** Everything went fine *)
+let success         = 0
 
 

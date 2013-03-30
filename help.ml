@@ -20,5 +20,12 @@ let usage =
     "i         Zoom in\n"^
     "o         Zoom out\n"^
     "f         Fit image\n"^
-    "z         Full image\n"
+    "z         Full image"
+
+let print_usage =
+  print_endline usage
+
+let exit_usage = 
+  print_usage;
+  exit Helpers.not_enough_args;
 
