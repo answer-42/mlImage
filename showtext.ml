@@ -8,7 +8,7 @@
 open Batteries
 open Imagetypes
 
-let font_name = "GoudyStMTT.ttf"
+let font_name = "Tuffy_Bold.ttf"
 
 (** This function initalizes the fontsystem and returns the font that we will
  * use in subsequent calls to render fonts. Fonts will be added to the state. *)

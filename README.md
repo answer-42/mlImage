@@ -3,6 +3,9 @@ This is an image viewer written in Ocaml. We use SDL to show and load the images
 and it has a pure keyboard interface. The code has been published under the
 BeerWare licence. 
 
+The font is taken from http://tulrich.com/fonts/ and must be placed in the same
+folder as the executable.
+
 Copyright Sebastian Benque 2013.
 
 ## Usage
