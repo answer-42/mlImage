@@ -14,7 +14,7 @@ let initalize args =
   let images = Imagepaths.get_images args in
   let cur_img_id = 0 in
   (* At least one image is needed to continue *)
-  if Array.length images < 1 then exit Helpers.no_images;
+  if Array.length images < 1 then exit Helpers.not_enough_args; 
 
   let screen = Sdlvideo.set_video_mode 0 0 [] in
   let img = Sdlloader.load_image images.(cur_img_id) in
@@ -46,11 +46,8 @@ let main () =
   (* Getting commandline arguments *)
   let args   = Array.tail Sys.argv 1 in
   
-  if Array.length args == 1 then Help.exit_usage;
-
   Sdl.init [`VIDEO];
   at_exit Sdl.quit;
- 
   Eventhandling.run (initalize args) true
 
 let () = main ()

@@ -22,10 +22,3 @@ let usage =
     "f         Fit image\n"^
     "z         Full image"
 
-let print_usage =
-  print_endline usage
-
-let exit_usage = 
-  print_usage;
-  exit Helpers.not_enough_args;
-

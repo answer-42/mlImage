@@ -35,7 +35,7 @@ NATIVE_ENABLED = true
 BYTE_ENABLED   = false
 
 # -annot should be removed in production code.
-OCAMLFLAGS    += -thread # -annot
+OCAMLFLAGS    += -thread -annot
 OCAMLCFLAGS   += 
 OCAMLOPTFLAGS +=
 OCAML_LINK_FLAGS +=
